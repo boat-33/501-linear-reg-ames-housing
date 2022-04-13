@@ -3,6 +3,11 @@ from dash import dcc,html
 from dash.dependencies import Input, Output, State
 
 
+########### Styling colors
+colors = {
+    'background': '#111111',
+    'text': '#7FDBFF'
+}
 
 ########### Define your variables ######
 myheading1='Predicting Home Sale Prices in Ames, Iowa'
@@ -19,25 +24,25 @@ server = app.server
 app.title=tabtitle
 
 ########### Set up the layout
-app.layout = html.Div(children=[
-    html.H1(myheading1),
+app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
+    html.H1(children=myheading1, style={'textAlign': 'center', 'color': colors['text']}),
     html.Div([
-        html.Img(src=app.get_asset_url(image1), style={'width': '30%', 'height': 'auto'}, className='four columns'),
+        html.Img(src=app.get_asset_url(image1), style={'width': '30%', 'height': 'auto', 'paddingLeft': '20px'}, className='four columns'),
         html.Div([
-                html.H3('Features of Home:'),
-                html.Div('Year Built:'),
+                html.H3(children='Features of Home:', style={'textAlign': 'left', 'color': colors['text']}),
+                html.Div('Year Built:', style={'textAlign': 'left', 'color': colors['text']}),
                 dcc.Input(id='YearBuilt', value=2010, type='number', min=2006, max=2010, step=1),
-                html.Div('Bathrooms:'),
+                html.Div(children='Bathrooms:', style={'textAlign': 'left', 'color': colors['text']}),
                 dcc.Input(id='Bathrooms', value=2, type='number', min=1, max=5, step=1),
-                html.Div('Bedrooms:'),
+                html.Div(children='Bedrooms:', style={'textAlign': 'left', 'color': colors['text']}),
                 dcc.Input(id='BedroomAbvGr', value=4, type='number', min=1, max=5, step=1),
-                html.Div('Total Square Feet:'),
+                html.Div(children='Total Square Feet:', style={'textAlign': 'left', 'color': colors['text']}),
                 dcc.Input(id='TotalSF', value=2000, type='number', min=100, max=5000, step=1),
-                html.Div('Single Family Home:'),
+                html.Div(children='Single Family Home:', style={'textAlign': 'left', 'color': colors['text']}),
                 dcc.Input(id='SingleFam', value=0, type='number', min=0, max=1, step=1),
-                html.Div('Large Neighborhood:'),
+                html.Div(children='Large Neighborhood:', style={'textAlign': 'left', 'color': colors['text']}),
                 dcc.Input(id='LargeNeighborhood', value=0, type='number', min=0, max=1, step=1),
-                html.Div('Garage Cars:'),
+                html.Div(children='Garage Cars:', style={'textAlign': 'left', 'color': colors['text']}),
                 dcc.Input(id='GarageCars', value=0, type='number', min=0, max=12, step=1)
 
             ], className='four columns'),
@@ -50,22 +55,22 @@ app.layout = html.Div(children=[
                                 'verticalAlign': 'center',
                                 'horizontalAlign': 'center'}
                                 ),
-                html.H3('Predicted Home Value:'),
-                html.Div(id='Results')
+                html.H3('Predicted Home Value:', style={'textAlign': 'left', 'color': colors['text']}),
+                html.Div(id='Results', style={'textAlign': 'left', 'color': colors['text']})
             ], className='four columns')
         ], className='twelve columns',
     ),
     html.Br(),
     html.Br(),
     html.Br(),
-    html.H4('Regression Equation:'),
-    html.Div('Predicted Price = (- $1,360.5K Baseline) + ($0.7K * Year Built) + ($12.7K * Bathrooms) + (- $7.7K * Bedrooms) + ($0.049K * Total Square Feet) + ($ 24.2K * Single Family Home) + (- $7.5 K * Large Neighborhood) +  + ($ 19.8 K * GarageCars)'),
+    html.H4('Regression Equation:', style={'textAlign': 'left', 'color': colors['text'], 'paddingLeft': '20px'}),
+    html.Div(children='Predicted Price = (- $1,360.5K Baseline) + ($0.7K * Year Built) + ($12.7K * Bathrooms) + (- $7.7K * Bedrooms) + ($0.049K * Total Square Feet) + ($ 24.2K * Single Family Home) + (- $7.5 K * Large Neighborhood) +  + ($ 19.8 K * GarageCars)', style={'textAlign': 'left', 'color': colors['text'], 'paddingLeft': '20px'}),
     html.Br(),
-    html.A('Google Spreadsheet', href='https://docs.google.com/spreadsheets/d/1q2ustRvY-GcmPO5NYudvsBEGNs5Na5p_8LMeS4oM35U/edit?usp=sharing'),
+    html.A('Google Spreadsheet', href='https://docs.google.com/spreadsheets/d/1q2ustRvY-GcmPO5NYudvsBEGNs5Na5p_8LMeS4oM35U/edit?usp=sharing', style={'paddingLeft': '20px'}),
     html.Br(),
-    html.A('Code on Github', href=githublink),
+    html.A('Code on Github', href=githublink, style={'paddingLeft': '20px'}),
     html.Br(),
-    html.A("Data Source", href=sourceurl),
+    html.A("Data Source", href=sourceurl, style={'paddingLeft': '20px'}),
     ]
 )
 
