@@ -47,16 +47,9 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 
             ], className='four columns'),
             html.Div([
-                html.Button(children='Submit', id='submit-val', n_clicks=0,
-                                style={
-                                'background-color': 'red',
-                                'color': 'white',
-                                'margin-left': '5px',
-                                'verticalAlign': 'center',
-                                'horizontalAlign': 'center'}
-                                ),
                 html.H3('Predicted Home Value:', style={'textAlign': 'left', 'color': colors['text']}),
-                html.Div(id='Results', style={'textAlign': 'left', 'color': colors['text']})
+                html.Div(id='Results', style={'textAlign': 'left', 'color': colors['text']}),
+                html.Button(children='Submit', id='submit-val', n_clicks=0,className='button1')
             ], className='four columns')
         ], className='twelve columns',
     ),
